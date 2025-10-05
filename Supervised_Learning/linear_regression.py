@@ -32,3 +32,5 @@ class Regression(object):
         X = np.insert(X, 0, 1, axis=1)
         y_pred = X.dot(self.weight)
         return y_pred
+
+class l1Regularization:
