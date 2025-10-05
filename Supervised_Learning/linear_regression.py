@@ -26,6 +26,10 @@ class Regression(object):
         
         for i in range(self.n_iterations):
             y_predict = X.dot(self.weight)
+            mse = np.mean(0.5 * (Y-y_predict)**2 + self.regularization(self.w))
+            self.training_errors.append(mse)
+            grad_w = -(Y-y_predict).dot(X) + self.regularizatio.grad(self.w)
+            self.w = self.w - self.learning_rate * grad_w
             
 
     def predict(self,X):
@@ -33,4 +37,9 @@ class Regression(object):
         y_pred = X.dot(self.weight)
         return y_pred
 
-class l1Regularization:
+class LinearRegression(Regression):
+    def __init__(self, n_iterations=100, learning_rate=0.01, gradient_descent=True):
+        super().__init__(n_iterations, learning_rate)
+        self.gradient_descent = gradient_descent
+        self.regularization = lambda x: 0
+        self.regularization.grad = lambda x: 0
